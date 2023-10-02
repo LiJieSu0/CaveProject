@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlqdmye6vlxuj"]
+
+[ext_resource type="Texture2D" uid="uid://cepllmb4dtj7q" path="res://Assests/Map/BasicFloor.png" id="1_g71g2"]
+
+[node name="BasicMap" type="Node2D"]
+
+[node name="BasicFloor" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(903, 377)
+texture = ExtResource("1_g71g2")
+region_enabled = true
+region_rect = Rect2(-2156.87, -1091.65, 5270.94, 3094.97)

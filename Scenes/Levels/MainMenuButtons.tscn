@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://uyf8em785lxw"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/MainMenuButtons.cs" id="1_ovahm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7rej"]
+bg_color = Color(0.717647, 0.317647, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6bki"]
+bg_color = Color(0.588235, 0.333333, 0.0745098, 1)
+
+[node name="MainMenuBtns" type="CanvasLayer"]
+script = ExtResource("1_ovahm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.429
+anchor_top = 0.061
+anchor_right = 0.595
+anchor_bottom = 1.0
+offset_left = 93.6
+offset_top = 375.1
+offset_right = -132.0
+offset_bottom = -430.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -354.0
+offset_right = 156.0
+offset_bottom = -271.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7rej")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6bki")
+text = "Play"
+
+[node name="OptionBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -158.0
+offset_right = 156.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7rej")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6bki")
+text = "Option"
+
+[node name="ExitBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = 26.0
+offset_right = 156.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7rej")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6bki")
+text = "Exit
+"
+
+[connection signal="pressed" from="Control/PlayBtn" to="." method="OnPlayBtnPressed"]
+[connection signal="pressed" from="Control/OptionBtn" to="." method="OnOptionBtnPressed"]
+[connection signal="pressed" from="Control/ExitBtn" to="." method="OnExitBtnPressed"]

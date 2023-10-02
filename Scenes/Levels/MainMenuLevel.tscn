@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0it8fm1w1ptf"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/MainMenuLevel.cs" id="1_jrxtl"]
+[ext_resource type="PackedScene" uid="uid://uyf8em785lxw" path="res://Scenes/Levels/MainMenuButtons.tscn" id="2_aydss"]
+[ext_resource type="AudioStream" uid="uid://cexmojpgmbjke" path="res://Assests/Audio/BGM/MainMenuBGM.mp3" id="3_jqxu4"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_jrxtl")
+
+[node name="Canvas" parent="." instance=ExtResource("2_aydss")]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jqxu4")
+autoplay = true
