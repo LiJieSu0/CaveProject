@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4ju5xsy7n8c3"]
+[gd_scene load_steps=4 format=3 uid="uid://bsym8lad0ntwf"]
 
-[ext_resource type="PackedScene" uid="uid://5j0dh5jdcr3y" path="res://Scenes/Maps/level_1_map.tscn" id="1_384ii"]
-[ext_resource type="PackedScene" uid="uid://dia45ouctvu4w" path="res://Scenes/Characters/player.tscn" id="2_s0v3i"]
+[ext_resource type="PackedScene" uid="uid://by3xv1pcmhwh0" path="res://Scenes/Levels/level_1_map.tscn" id="1_3y0a3"]
+[ext_resource type="PackedScene" uid="uid://dia45ouctvu4w" path="res://Scenes/Characters/player.tscn" id="1_n5a8u"]
+[ext_resource type="PackedScene" uid="uid://dqkdu3nb122eq" path="res://Scenes/Characters/beetle.tscn" id="3_l6psf"]
 
 [node name="Level1" type="Node2D"]
 
-[node name="Level1Map" parent="." instance=ExtResource("1_384ii")]
+[node name="Level1Map" parent="." instance=ExtResource("1_3y0a3")]
 
-[node name="Player" parent="." instance=ExtResource("2_s0v3i")]
-position = Vector2(403, 234)
+[node name="Player" parent="." instance=ExtResource("1_n5a8u")]
+position = Vector2(513, 349)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
+
+[node name="beetle" parent="." instance=ExtResource("3_l6psf")]
+position = Vector2(536, 255)
+
+[node name="beetle2" parent="." instance=ExtResource("3_l6psf")]
+position = Vector2(411, 317)
