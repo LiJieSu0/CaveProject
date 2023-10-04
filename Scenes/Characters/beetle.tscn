@@ -134,5 +134,15 @@ position = Vector2(10, 0)
 target_position = Vector2(112, 0)
 collision_mask = 5
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 30.0
+avoidance_mask = 15
+debug_enabled = true
+
 [connection signal="body_entered" from="DetectArea" to="." method="OnBodyEnterDetectArea"]
 [connection signal="body_exited" from="DetectArea" to="." method="OnBodyExitDetectArea"]
+[connection signal="timeout" from="DashTimer" to="." method="OnDashTimerTimeout"]

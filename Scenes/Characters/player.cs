@@ -3,6 +3,7 @@ using System;
 
 public partial class player : CharacterBody2D
 {
+	[Export]
 	public float Speed = 300.0f;
 	
 	AnimatedSprite2D animationPlayer;
@@ -21,6 +22,11 @@ public partial class player : CharacterBody2D
 	{
 		MovingFunc();
 		CharacterState();
+		for(int i=0;i<GetSlideCollisionCount();i++){
+			var collision=GetSlideCollision(i);
+			GD.Print((collision.GetCollider() as Node2D).Name);
+		}
+
 
 	}
 	private void MovingFunc(){
@@ -28,6 +34,7 @@ public partial class player : CharacterBody2D
 		Vector2 direction=Input.GetVector("left","right","up","down");
 		Velocity=direction*Speed;
 		MoveAndSlide();
+		
 	}
 	private async void OnReloadFinished(){
 		animationPlayer.Play("Reload");

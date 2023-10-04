@@ -3,18 +3,46 @@ using System;
 
 public partial class beetle : CharacterBody2D
 {
+
+	NavigationAgent2D agent;
+
 	public const float Speed = 300.0f;
 	public int hitCount=0;
 	RayCast2D sight;
 	private bool isDetectingPlayer=false;
+
+	
+	
+	private bool isDashing=false;
+	private bool canDash=true;
+	Timer dashTimer;
 	public override void _Ready()
 	{
 		bullet.bulletHit+=hitByBullet;
 		sight=GetNode<RayCast2D>("RayCast2D");
+		dashTimer=GetNode<Timer>("DashTimer");
+		agent=GetNode<NavigationAgent2D>("NavigationAgent2D");
 	}
 	
 	public override void _Process(double delta)
 	{
+		// if(Input.IsActionJustPressed("test")){
+		// 	isDashing=true;
+		// 	canDash=false;
+		// 	dashTimer.Start();
+		// }
+		// if(isDashing){
+		// 	Velocity+=(float)delta*Vector2.Right*5000;
+		// 	MoveAndSlide();
+		// }
+		agent.TargetPosition=GetParent().GetNode<Node2D>("Player").Position;
+
+		var direction=agent.GetNextPathPosition()-GlobalPosition;
+		direction=direction.Normalized();
+		Velocity=Velocity.Lerp(direction*Speed,20*(float)delta);
+
+		MoveAndSlide();
+		
 		SightDetection();
 		if(isDetectingPlayer)
 			LookAt(GetParent().GetNode<Node2D>("Player").Position);
@@ -43,8 +71,12 @@ public partial class beetle : CharacterBody2D
 		if(sight.GetCollider()!=null){
 			Node2D tmp=(Node2D)sight.GetCollider();
 			if(tmp.Name=="Player"){
-				GD.Print(this.Name+" Found Player");
+
 			}
 		}
+	}
+	public void OnDashTimerTimeout(){
+		isDashing=false;
+		canDash=true;
 	}
 }

@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsym8lad0ntwf"]
+[gd_scene load_steps=7 format=3 uid="uid://bsym8lad0ntwf"]
 
 [ext_resource type="PackedScene" uid="uid://by3xv1pcmhwh0" path="res://Scenes/Levels/level_1_map.tscn" id="1_3y0a3"]
 [ext_resource type="PackedScene" uid="uid://dia45ouctvu4w" path="res://Scenes/Characters/player.tscn" id="1_n5a8u"]
 [ext_resource type="PackedScene" uid="uid://dqkdu3nb122eq" path="res://Scenes/Characters/beetle.tscn" id="3_l6psf"]
+[ext_resource type="Texture2D" uid="uid://t3hpvt16xaii" path="res://Assests/Zerg/EggCluster.png" id="4_efsgt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_t4csq"]
+vertices = PackedVector2Array(-15, 47, 1021, 50, 1027, 643, 36, 633)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 47, 1021, 50, 1027, 643, 36, 633)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itsc6"]
+size = Vector2(23.8583, 20)
 
 [node name="Level1" type="Node2D"]
 
@@ -19,3 +28,28 @@ position = Vector2(536, 255)
 
 [node name="beetle2" parent="." instance=ExtResource("3_l6psf")]
 position = Vector2(411, 317)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_t4csq")
+
+[node name="EggCluster" type="Sprite2D" parent="."]
+position = Vector2(624, 431)
+scale = Vector2(3.96875, 2.65625)
+texture = ExtResource("4_efsgt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="EggCluster"]
+scale = Vector2(1, 1)
+collision_layer = 4
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EggCluster/StaticBody2D"]
+position = Vector2(1.17323, 5.64703)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_itsc6")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="EggCluster/StaticBody2D"]
+position = Vector2(1.00787, 5.27057)
+scale = Vector2(1, 1)
+radius = 20.0
+vertices = PackedVector2Array(-11.3386, -9.03529, 11.0866, -9.41177, 12.0945, 9.78824, -11.5905, 9.78824)
+avoidance_layers = 15
